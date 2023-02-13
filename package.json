@@ -1,0 +1,19 @@
+{
+  "name": "notes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aksharma-7/serverless-notes-crud-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aksharma-7/serverless-notes-crud-app/issues"
+  },
+  "homepage": "https://github.com/aksharma-7/serverless-notes-crud-app#readme"
+}

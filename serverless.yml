@@ -9,5 +9,9 @@ provider:
   region: us-east-1
 
 functions:
-  hello:
-    handler: handler.hello
+  createNote:
+    handler: createNote.handler
+    events:
+      - http:
+          method: post
+          path: notes
