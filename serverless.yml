@@ -10,8 +10,26 @@ provider:
 
 functions:
   createNote:
-    handler: createNote.handler
+    handler: functions/createNote.handler
     events:
       - http:
           method: post
+          path: notes
+  updateNote:
+    handler: functions/updateNote.handler
+    events:
+      - http:
+          method: put
+          path: notes/{id}
+  deleteNote:
+    handler: functions/deleteNote.handler
+    events:
+      - http:
+          method: delete
+          path: notes/{id}
+  getAllNotes:
+    handler: functions/getAllNotes.handler
+    events:
+      - http:
+          method: get
           path: notes
