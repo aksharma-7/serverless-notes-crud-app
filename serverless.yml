@@ -2,6 +2,9 @@ service: notes
 
 frameworkVersion: "3"
 
+plugins:
+  - serverless-iam-roles-per-function # This plugin help us apply iamRoleStatement to each function so that we don't have to apply it at resource level as it woud be applied to each function then
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -15,6 +18,12 @@ functions:
       - http:
           method: post
           path: notes
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:PutItem
+        Resource: !GetAtt notesTable.Arn # GetAtt is intrinsic function
+
   updateNote:
     handler: functions/updateNote.handler
     events:

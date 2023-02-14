@@ -18,5 +18,8 @@
   "homepage": "https://github.com/aksharma-7/serverless-notes-crud-app#readme",
   "dependencies": {
     "aws-sdk": "^2.1314.0"
+  },
+  "devDependencies": {
+    "serverless-iam-roles-per-function": "^3.2.0"
   }
 }
