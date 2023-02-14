@@ -60,6 +60,13 @@ functions:
       - http:
           method: get
           path: notes
+    environment:
+      NOTES_TABLE_NAME: !Ref notesTable
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:Scan
+        Resource: !GetAtt notesTable.Arn # GetAtt is intrinsic function
 
 resources:
   Resources:
