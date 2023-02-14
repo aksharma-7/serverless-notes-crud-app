@@ -18,6 +18,8 @@ functions:
       - http:
           method: post
           path: notes
+    environment:
+      NOTES_TABLE_NAME: !Ref notesTable
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -30,6 +32,14 @@ functions:
       - http:
           method: put
           path: notes/{id}
+    environment:
+      NOTES_TABLE_NAME: !Ref notesTable
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:UpdateItem
+        Resource: !GetAtt notesTable.Arn # GetAtt is intrinsic function
+
   deleteNote:
     handler: functions/deleteNote.handler
     events:
