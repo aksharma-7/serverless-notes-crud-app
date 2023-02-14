@@ -2,7 +2,7 @@
 
 const createNote = async (event) => {
   return {
-    statusCode: 200,
+    statusCode: 201,
     body: JSON.stringify("A New Note Created"),
   };
 };
