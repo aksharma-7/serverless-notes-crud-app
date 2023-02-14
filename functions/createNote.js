@@ -9,7 +9,7 @@ const createNote = async (event) => {
       TableName: NOTES_TABLE_NAME,
       Item: {
         notesId: data.id,
-        tite: data.title,
+        title: data.title,
         body: data.body,
       },
       ConditionExpression: "attribute_not_exists(notesId)", // this condition will check before inserting in DB if there is already a note with same id
