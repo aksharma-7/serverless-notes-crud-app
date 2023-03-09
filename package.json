@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/aksharma-7/serverless-notes-crud-app#readme",
   "dependencies": {
+    "aws-jwt-verify": "^3.4.0",
     "aws-sdk": "^2.1314.0"
   },
   "devDependencies": {
