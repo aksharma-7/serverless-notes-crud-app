@@ -13,7 +13,7 @@ provider:
 
 functions:
   authorizer:
-    handler: functions/auth.handlers
+    handler: functions/auth.handler
 
   createNote:
     handler: functions/createNote.handler

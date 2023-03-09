@@ -1,9 +1,9 @@
-const generatePolicy = (prinipalId, effect, resource) => {
+const generatePolicy = (principalId, effect, resource) => {
   const authResponse = {};
-  authResponse.prinipalId = prinipalId;
+  authResponse.principalId = principalId;
   if (effect && resource) {
     const policyDocument = {
-      version: "2023-02-25",
+      Version: "2012-10-17",
       Statement: [
         {
           Effect: effect, // Allow or Deny
@@ -22,14 +22,18 @@ const generatePolicy = (prinipalId, effect, resource) => {
 };
 
 const handler = async (event) => {
-  const token = event.authorizationToken;
-  switch (token) {
-    case "allow":
-      return generatePolicy("user", "allow", event.methodArn);
-    case "deny":
-      return generatePolicy("user", "deny", event.methodArn);
-    default:
-      return "Error: Invalid Token";
+  try {
+    const token = event.authorizationToken;
+    switch (token) {
+      case "allow":
+        return generatePolicy("user", "Allow", event.methodArn);
+      case "deny":
+        return generatePolicy("user", "deny", event.methodArn);
+      default:
+        return "Error: Invalid Token";
+    }
+  } catch (error) {
+    console.log("error occuroed", error);
   }
 };
 
