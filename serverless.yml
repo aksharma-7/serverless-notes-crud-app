@@ -14,6 +14,9 @@ provider:
 functions:
   authorizer:
     handler: functions/auth.handler
+    environment:
+      COGNITO_USERPOOL_ID: !Ref cognitoUserPool
+      COGNITO_WEB_CLIENT_ID: !Ref congnitoUserPoolWebClient
 
   createNote:
     handler: functions/createNote.handler
@@ -71,7 +74,7 @@ functions:
           path: notes
           authorizer:
             name: userpool_authorizer
-            arn: arn:aws:cognito-idp:us-east-1:652152586723:userpool/us-east-1_pq9J83KpY
+            arn: ${ssm:/notes/dev/userPoolArn}
     environment:
       NOTES_TABLE_NAME: !Ref notesTable
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
