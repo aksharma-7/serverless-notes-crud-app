@@ -1,3 +1,11 @@
+const { CognitoJwtVerifier } = require("aws-jwt-verify");
+
+const jwtVerifier = CognitoJwtVerifier.create({
+  userPoolId: "us-east-1_pq9J83KpY",
+  tokenUse: "id",
+  clientId: "3vakgaqu0blbibv97p9tqrtoqu",
+});
+
 const generatePolicy = (principalId, effect, resource) => {
   const authResponse = {};
   authResponse.principalId = principalId;
@@ -24,16 +32,12 @@ const generatePolicy = (principalId, effect, resource) => {
 const handler = async (event) => {
   try {
     const token = event.authorizationToken;
-    switch (token) {
-      case "allow":
-        return generatePolicy("user", "Allow", event.methodArn);
-      case "deny":
-        return generatePolicy("user", "deny", event.methodArn);
-      default:
-        return "Error: Invalid Token";
-    }
+    console.log(token);
+    const payload = await jwtVerifier.verify(token);
+    console.log(JSON.stringify(payload));
+    return generatePolicy("user", "Allow", event.methodArn);
   } catch (error) {
-    console.log("error occuroed", error);
+    return "Error: Invalid Token";
   }
 };
 
