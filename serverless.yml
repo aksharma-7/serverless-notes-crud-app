@@ -74,7 +74,8 @@ functions:
           path: notes
           authorizer:
             name: userpool_authorizer
-            arn: ${ssm:/notes/dev/userPoolArn}
+            type: COGNITO_USER_POOLS
+            arn: !GetAtt cognitoUserPool.Arn
     environment:
       NOTES_TABLE_NAME: !Ref notesTable
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
