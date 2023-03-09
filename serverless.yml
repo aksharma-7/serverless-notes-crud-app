@@ -69,7 +69,9 @@ functions:
       - http:
           method: get
           path: notes
-          authorizer: authorizer
+          authorizer:
+            name: userpool_authorizer
+            arn: arn:aws:cognito-idp:us-east-1:652152586723:userpool/us-east-1_pq9J83KpY
     environment:
       NOTES_TABLE_NAME: !Ref notesTable
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
