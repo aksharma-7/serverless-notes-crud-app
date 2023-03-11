@@ -8,7 +8,7 @@ plugins:
 provider:
   name: aws
   runtime: nodejs14.x
-  stage: dev
+  stage: ${opt:stage, 'dev'} # opt allows to take paramter passed during deployment
   region: us-east-1
 
 functions:
